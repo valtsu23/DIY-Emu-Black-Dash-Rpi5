@@ -8,6 +8,7 @@ Raspberry pi 5 based digital dash working with Ecumaster Emu Black
 ### Software differences
 - HardwarePWM uses different channel and different chip (wiring remains the same)
 - Standard Adafruit Neopixel library won't work with Rpi5, so I'm using Neopixel SPI library: https://github.com/adafruit/Adafruit_CircuitPython_NeoPixel_SPI
+- Because of the Neopixel SPI library usage there is no need to run the code with Sudo
 
 ### Performance
 - Boot time is under 15s, so few seconds better than with Rpi 4
