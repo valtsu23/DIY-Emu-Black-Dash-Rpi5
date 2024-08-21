@@ -3,7 +3,7 @@ Raspberry pi 5 based digital dash working with Ecumaster Emu Black
 
 ### Based on: https://github.com/valtsu23/DIY-Emu-Black-Dash
 - Setup is pretty close to above. Excpect: install the Neopixel SPI library, setup the rtc battery (guide on Raspberry Pi homepage) and don't overclock. 
-- Hardware remains the same, expect the rtc is Rpi5:s internal with official rtc battery
+- Hardware remains the same, expect the rtc, which is Rpi5:s internal with official rtc battery
 
 ### Software differences
 - HardwarePWM uses different channel and different chip (wiring remains the same)
