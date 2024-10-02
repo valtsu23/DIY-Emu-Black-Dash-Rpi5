@@ -1,4 +1,5 @@
 # Raspberry pi 5 version
+# Version 1.1: Cpu clock monitoring replaced with cpu load monitoring using Psutil
 
 import pygame
 import time
@@ -16,8 +17,10 @@ if TEST_MODE is False:
     import os
     import can
     import mcp3002
+    import psutil
     import shift_light_spi
     from rpi_hardware_pwm import HardwarePWM
+    psutil.cpu_percent()
     screen = pygame.display.set_mode(size)
     pygame.mouse.set_visible(False)
     PATH = "/home/your_user_name/Dash/"
@@ -219,12 +222,6 @@ def getCPUtemperature():
     temp = os.popen('vcgencmd measure_temp').readline()
     temp = temp.replace("temp=", "")
     return temp.replace("'C\n", "°C")
-
-def getCPUclock():
-    clock = os.popen('vcgencmd measure_clock arm').readline()
-    clock = clock.replace("frequency(0)=", "")
-    clock = int(clock)/1000000
-    return str(int(clock))
 
 def error_flags(number):
     # Convert to bit list
@@ -659,10 +656,10 @@ while loop:
         if len(error_list) == 0:
             pygame.draw.rect(screen, LIGHT_BLUE, (0, 440, 800, 40))
             cpu_temp = getCPUtemperature()
-            cpu_clock = getCPUclock()
+            cpu_load = str(psutil.cpu_percent())
             # Showing ADC just for testing
-            cpu_stats_text = font_30.render("Cpu: " + cpu_temp + ", " + cpu_clock +
-                                            " MHz", True, WHITE, LIGHT_BLUE)
+            cpu_stats_text = font_30.render("Cpu: " + cpu_temp + ", " + cpu_load +
+                                            " %", True, WHITE, LIGHT_BLUE)
             screen.blit(cpu_stats_text, (0, 443))
         else:
             errors_text = font_30.render("Errors " + str(len(error_list)) + ": ", True, WHITE, RED)
