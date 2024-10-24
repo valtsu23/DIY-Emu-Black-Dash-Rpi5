@@ -217,7 +217,7 @@ if TEST_MODE is False:
     old_dark = is_dark(True)
     dimmer(old_dark)
 
-# Return CPU temperature and CPU clock as a character string
+# Return CPU temperature as a character string
 def getCPUtemperature():
     temp = os.popen('vcgencmd measure_temp').readline()
     temp = temp.replace("temp=", "")
@@ -657,7 +657,6 @@ while loop:
             pygame.draw.rect(screen, LIGHT_BLUE, (0, 440, 800, 40))
             cpu_temp = getCPUtemperature()
             cpu_load = str(psutil.cpu_percent())
-            # Showing ADC just for testing
             cpu_stats_text = font_30.render("Cpu: " + cpu_temp + ", " + cpu_load +
                                             " %", True, WHITE, LIGHT_BLUE)
             screen.blit(cpu_stats_text, (0, 443))
