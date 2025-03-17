@@ -1,4 +1,6 @@
 # DIY-Emu-Black-Dash-Rpi5
+No longer supported. Checkout new version: https://github.com/valtsu23/DIY-Emu-Black-Dash-Rpi5-V2
+
 Raspberry pi 5 4Gb based digital dash working with Ecumaster Emu Black
 
 ### Based on: https://github.com/valtsu23/DIY-Emu-Black-Dash
